@@ -8,7 +8,7 @@ int main (int argc, char **argv) {
 
     ros::Publisher pub = nh.advertise<std_msgs::String>("/test_message", 10);
 
-    ros::Rate rate(3); // will ensure that while block executes at 3Hz
+    ros::Rate rate(3); // ensure that while block executes at 3Hz
 
     while(ros::ok()) {
         std_msgs::String msg;
