@@ -1,7 +1,8 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 
-int main (int argc, char **argv) {
+int main(int argc, char **argv)
+{
     ros::init(argc, argv, "transmitter", ros::init_options::AnonymousName);
 
     ros::NodeHandle nh;
@@ -10,7 +11,8 @@ int main (int argc, char **argv) {
 
     ros::Rate rate(3); // ensure that while block executes at 3Hz
 
-    while(ros::ok()) {
+    while (ros::ok())
+    {
         std_msgs::String msg;
         msg.data = "This is test message of the cpp publisher";
         pub.publish(msg);
