@@ -1,0 +1,6 @@
+<launch>
+<param name="/number_publish_frequency" type="double" value="3.0" />
+<param name="/number_to_publish" type="int" value="11" />
+<node name="number_publisher" pkg="agv_motion" type="number_publisher" />
+<node name="number_counter" pkg="agv_motion" type="number_counter" />
+</launch>
