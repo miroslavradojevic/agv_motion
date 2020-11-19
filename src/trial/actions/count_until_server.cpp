@@ -15,5 +15,14 @@ class CountUntilServer {
 
     public:
     CountUntilServer():
+        _as(_nh, 
+            "/count_util", 
+            boost::bind(&CountUntilServer::onGoal, this, _1), 
+            false),
+        _counter(0)
+        {
+            _as.start();
+            ROS_INFO("Simple Action Server has been started");
+        }
 
 }
