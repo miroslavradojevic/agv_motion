@@ -6,23 +6,38 @@
 #include <agv_motion/CountUntilResult.h>
 #include <agv_motion/CountUntilFeedback.h>
 
-class CountUntilServer {
+class CountUntilServer
+{
 
-    protected:
+protected:
     ros::NodeHandle _nh;
     actionlib::SimpleActionServer<agv_motion::CountUntilAction> _as;
     int _counter;
 
-    public:
-    CountUntilServer():
-        _as(_nh, 
-            "/count_util", 
-            boost::bind(&CountUntilServer::onGoal, this, _1), 
-            false),
-        _counter(0)
-        {
-            _as.start();
-            ROS_INFO("Simple Action Server has been started");
-        }
+public:
+    CountUntilServer() : _as(_nh,
+                             "/count_util",
+                             boost::bind(&CountUntilServer::onGoal, this, _1),
+                             false),
+                         _counter(0)
+    {
+        _as.start();
+        ROS_INFO("Simple Action Server has been started");
+    }
 
+    void onGoal(const agv_motion::CountUntilGoalConstPtr &goal)
+    {
+        ROS_INFO("Goal received");
+    }
+};
+
+int main()
+{
+    ros::init();
+
+    ROS_INFO("Starting server...");
+
+    CountUntilServer server;
+
+    ros::spin();
 }
