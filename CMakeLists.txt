@@ -151,6 +151,7 @@ add_executable(add_two_ints_server src/trial/services/add_two_ints_server.cpp)
 add_executable(add_two_ints_client src/trial/services/add_two_ints_client.cpp)
 
 add_executable(count_until_server src/trial/actions/count_until_server.cpp)
+add_executable(count_until_client src/trial/actions/count_until_client.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -176,6 +177,7 @@ target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
 target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
 
 target_link_libraries(count_until_server ${catkin_LIBRARIES})
+target_link_libraries(count_until_client ${catkin_LIBRARIES})
 
 #############
 ## Install ##
