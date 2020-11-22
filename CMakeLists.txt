@@ -11,13 +11,14 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs 
+  actionlib 
   actionlib_msgs 
   std_srvs
   rospy_tutorials
 )
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -119,8 +120,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
+  include
+  ${catkin_INCLUDE_DIRS} 
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -138,12 +140,17 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/agv_motion_node.cpp)
 add_executable(dummy_cpp src/dummy_node.cpp)
+
 add_executable(transmitter src_trial_topics/transmitter.cpp)
 add_executable(receiver src_trial_topics/receiver.cpp)
+
 add_executable(number_publisher src_trial_topics/number_publisher.cpp)
 add_executable(number_counter src_trial_topics/number_counter.cpp)
-add_executable(add_two_ints_server src_trial_services/add_two_ints_server.cpp)
-add_executable(add_two_ints_client src_trial_services/add_two_ints_client.cpp)
+
+add_executable(add_two_ints_server src/trial/services/add_two_ints_server.cpp)
+add_executable(add_two_ints_client src/trial/services/add_two_ints_client.cpp)
+
+add_executable(count_until_server src/trial/actions/count_until_server.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -158,12 +165,17 @@ add_executable(add_two_ints_client src_trial_services/add_two_ints_client.cpp)
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node ${catkin_LIBRARIES})
 target_link_libraries(dummy_cpp ${catkin_LIBRARIES})
+
 target_link_libraries(transmitter ${catkin_LIBRARIES})
 target_link_libraries(receiver ${catkin_LIBRARIES})
+
 target_link_libraries(number_publisher ${catkin_LIBRARIES})
 target_link_libraries(number_counter ${catkin_LIBRARIES})
+
 target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
 target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
+
+target_link_libraries(count_until_server ${catkin_LIBRARIES})
 
 #############
 ## Install ##
