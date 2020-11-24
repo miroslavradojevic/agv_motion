@@ -68,7 +68,8 @@ find_package(Boost REQUIRED COMPONENTS system)
 add_action_files(
   FILES
   CountUntil.action 
-  MoveRobot.action
+  MoveRobot.action 
+  MoveTurtlesim.action
 )
 
 ## Generate added messages and services with any dependencies listed here
