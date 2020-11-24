@@ -1,0 +1,6 @@
+<launch>
+<arg name="mode" default="move" />
+<param name="/turtlesim_motion_mode" type="str" value="$(arg mode)" />
+<node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node" />
+<node name="turtlesim_move" pkg="agv_motion" type="turtlesim_motion.py" output="screen"/>
+</launch>
