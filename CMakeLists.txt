@@ -67,7 +67,8 @@ find_package(Boost REQUIRED COMPONENTS system)
 ## Generate actions in the 'action' folder
 add_action_files(
   FILES
-  CountUntil.action
+  CountUntil.action 
+  MoveRobot.action
 )
 
 ## Generate added messages and services with any dependencies listed here
