@@ -6,4 +6,4 @@ float32 y
 string message
 ---
 #feedback
-float32 goal_dist
+float32 trajectory_length
