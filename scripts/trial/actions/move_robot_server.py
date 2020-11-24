@@ -31,14 +31,15 @@ class MoveRobotServer:
         message = ""
 
         if goal_position == self._current_position:
-            success = True
             message = "Current position is already correct"
+            success = True
 
-        rate = rospy.Rate(1.0)
 
         if goal_position<0 or goal_position >100:
             message = "Invalid goal position"
             invalid_parameters = True
+        
+        rate = rospy.Rate(1.0)
 
         while not rospy.is_shutdown() and not success and not invalid_parameters:
             
