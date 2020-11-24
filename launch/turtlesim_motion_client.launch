@@ -1,0 +1,7 @@
+<launch>
+<arg name="x" default="7.4" />
+<arg name="y" default="2.1" />
+<param name="/x_goal" type="double" value="$(arg x)" />
+<param name="/y_goal" type="double" value="$(arg y)" />
+<node name="turtlesim_client" pkg="agv_motion" type="turtlesim_motion_client.py" output="screen"/>
+</launch>
