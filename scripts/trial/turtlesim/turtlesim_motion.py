@@ -238,7 +238,5 @@ if __name__ == '__main__':
         else:
             rospy.logerr("Could not find motion mode: {}".format(motion_mode))
         
-        # setDesiredOrientation(math.radians(90))
-
     except rospy.ROSInterruptException:
         rospy.logwarn("node terminated")
