@@ -12,7 +12,11 @@ if __name__ == '__main__':
         # create client
         add_two_ints = rospy.ServiceProxy("/add_two_ints", AddTwoInts)
         # call the client
-        resp = add_two_ints(2, 6)
+        a = 2.2
+        b = 6.6
+        rospy.loginfo("a = {}".format(a))
+        rospy.loginfo("b = {}".format(b))
+        resp = add_two_ints(a, b)
         rospy.loginfo("Sum is: " + str(resp.sum))
     except rospy.ServiceException as e:
         rospy.logwarn("Service failed: " + str(e))
