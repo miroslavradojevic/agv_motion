@@ -1,0 +1,15 @@
+<launch>
+    <!-- <node name="teleop_keybord" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
+    </node> -->
+
+    <arg name="mode" default="straight" />
+    <arg name="vel" default="1.0" />
+    <arg name="freq" default="2.0" />
+    
+    <param name="motion_frequency" type="double" value="$(arg freq)" />
+    <param name="motion_velocity" type="double" value="$(arg vel)" />
+
+    <node name="scout_motion" pkg="agv_motion" type="scout_motion.py" output="screen">
+        <param name="scout_motion_mode" type="str" value="$(arg mode)" />
+    </node>
+</launch>
