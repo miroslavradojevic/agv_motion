@@ -14,7 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib 
   actionlib_msgs 
   std_srvs
-  rospy_tutorials
+  rospy_tutorials 
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -58,11 +59,10 @@ find_package(Boost REQUIRED COMPONENTS system)
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  AddTwoFloats.srv
+)
 
 ## Generate actions in the 'action' folder
 add_action_files(
@@ -143,11 +143,11 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/agv_motion_node.cpp)
 add_executable(dummy_cpp src/dummy_node.cpp)
 
-add_executable(transmitter src_trial_topics/transmitter.cpp)
-add_executable(receiver src_trial_topics/receiver.cpp)
+add_executable(transmitter src/trial/topics/transmitter.cpp)
+add_executable(receiver src/trial/topics/receiver.cpp)
 
-add_executable(number_publisher src_trial_topics/number_publisher.cpp)
-add_executable(number_counter src_trial_topics/number_counter.cpp)
+add_executable(number_publisher src/trial/topics/number_publisher.cpp)
+add_executable(number_counter src/trial/topics/number_counter.cpp)
 
 add_executable(add_two_ints_server src/trial/services/add_two_ints_server.cpp)
 add_executable(add_two_ints_client src/trial/services/add_two_ints_client.cpp)
