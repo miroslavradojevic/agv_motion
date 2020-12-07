@@ -5,22 +5,25 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 def plot_trajectory_xy(csv_path):
-        traj = pd.read_csv(csv_path) 
-        traj.columns = ['x', 'y']
+        print(csv_path)
+        try:
+            traj = pd.read_csv(csv_path, comment="#") 
+            traj.columns = ['x', 'y']
+            fig = plt.figure(figsize=(8,8))
+            plt.plot(traj['x'], traj['y'], label="TRAJECTORY")
+            plt.legend(loc="upper right")
+            plt.grid()
+            plt.xlabel("x")
+            plt.ylabel("y")
+            plt.axis('equal')
+            plt.show()
+            out_path = csv_path.replace(".csv", ".png")
+            print(out_path)
+            fig.savefig(out_path, bbox_inches='tight', dpi=250)
+            plt.close(fig)
+        except: 
+            print("Error in reading " + str(csv_path))
 
-        fig = plt.figure(figsize=(8,8))
-        plt.plot(traj['x'], traj['y'], label="TRAJECTORY")
-        plt.legend(loc="upper right")
-        plt.grid()
-        plt.xlabel("x")
-        plt.ylabel("y")
-        plt.axis('equal')
-        plt.show()
-        # os.path.join(dir, "name.pdf")
-        out_path = csv_path.replace(".csv", ".png")
-        print(out_path)
-        fig.savefig(out_path, bbox_inches='tight', dpi=250)
-        plt.close(fig)
 
 if __name__ == '__main__':
     if len(sys.argv) == 2:
@@ -39,8 +42,9 @@ if __name__ == '__main__':
         print(dirs)
         for file in dirs:
             if file.endswith('.csv'):
-                print(file)
-                plot_trajectory_xy(file)
+                file1 = os.path.join(path, file)
+                print(file1)
+                plot_trajectory_xy(file1)
 
 
         # print("Usage:\n{} csv_path".format(sys.argv[0]))
