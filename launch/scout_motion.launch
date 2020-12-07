@@ -4,12 +4,15 @@
 
     <arg name="mode" default="straight" />
     <arg name="vel" default="1.0" />
-    <arg name="freq" default="2.0" />
+    <arg name="freq" default="10.0" />
+    <arg name="dist" default="5.0" />
     
     <param name="motion_frequency" type="double" value="$(arg freq)" />
     <param name="motion_velocity" type="double" value="$(arg vel)" />
+    <param name="motion_dist" type="double" value="$(arg dist)" />
+    <param name="motion_mode" type="str" value="$(arg mode)" />
 
     <node name="scout_motion" pkg="agv_motion" type="scout_motion.py" output="screen">
-        <param name="scout_motion_mode" type="str" value="$(arg mode)" />
+        <!-- <param name="scout_motion_mode" type="str" value="$(arg mode)" /> -->
     </node>
 </launch>
